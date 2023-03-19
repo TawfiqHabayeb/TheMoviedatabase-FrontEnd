@@ -10,7 +10,7 @@ const Cardholder = () => {
       method: "GET",
       redirect: "follow",
     };
-    function GetMovies() {
+    const getMovies = () => {
       fetch(
         `https://api.themoviedb.org/3/trending/movie/${trending}?api_key=92cf4fd96a89a19dac8feb0f3399e64e`,
         requestOptions
@@ -18,13 +18,11 @@ const Cardholder = () => {
         .then((response) => response.json())
         .then((data) => setMovies(data.results))
         .catch((error) => console.log("error", error));
-    }
-    GetMovies();
+    };
+    getMovies();
   }, [trending]);
 
-  const addToList = () => {
-
-  };
+  const addToList = () => {};
 
   return (
     <div className="mainDiv">

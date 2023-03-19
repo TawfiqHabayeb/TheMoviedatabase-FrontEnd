@@ -5,7 +5,7 @@ const SearchPage = () => {
   const { query } = useParams();
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
-  function GetMovies() {
+  const getMovies = () => {
     var requestOptions = {
       method: "GET",
       redirect: "follow",
@@ -17,9 +17,9 @@ const SearchPage = () => {
       .then((response) => response.json())
       .then((data) => setMovies(data.results))
       .catch((error) => console.log("error", error));
-  }
+  };
   useEffect(() => {
-    GetMovies();
+    getMovies();
   }, [query]);
 
   return (

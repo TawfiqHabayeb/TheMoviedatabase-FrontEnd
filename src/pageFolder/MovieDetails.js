@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Footer from "../Footer";
+import Footer from "../component/Footer";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetail] = useState({});

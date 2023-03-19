@@ -1,8 +1,8 @@
-import Header from "../Header";
-import Footer from "../Footer";
-import Search from "../Search";
-import Section from "../../Section/Section";
-import CardHolder from "../Container/Cardholder";
+import Header from "../component/Header";
+import Footer from "../component/Footer";
+import Search from "../component/Search";
+import Section from "../component/Section";
+import CardHolder from "../component/Cardholder";
 import "/Users/tawfiqhabayeb/movie-app/src/App.css";
 
 const HomePage = () => {

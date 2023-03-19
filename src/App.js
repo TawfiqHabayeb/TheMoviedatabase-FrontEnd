@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import HomePage from "./component/Pages/HomePage";
-import MovieDetails from "./component/Pages/MovieDetails";
-import SearchPage from "./component/Pages/SearchPage";
-import WishList from "./component/Pages/WishList";
-import store from '../src/component/redux/Store'
+import HomePage from "./pageFolder/HomePage";
+import MovieDetails from "./pageFolder/MovieDetails";
+import SearchPage from "./pageFolder/SearchPage";
+
+import store from "./redux/Store";
 import { Provider } from "react-redux";
 
 function App() {

@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import Switch from "../component/switch/Switch";
+import Switch from "./Switch";
 import { useSelector } from "react-redux";
 
 const Section = ({ title }) => {
