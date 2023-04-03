@@ -11,9 +11,11 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import authServices from "../Services/AuthServices";
+import { MainContext } from "../Context/MainContextProvider";
 function Copyright(props) {
   return (
     <Typography
@@ -35,13 +37,15 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const { JWT, setJWT } = useContext(MainContext);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     switch (event.target.name) {
-      case "email":
-        setEmail(event.target.value);
+      case "username":
+        setUsername(event.target.value);
 
         break;
       case "password":
@@ -54,23 +58,28 @@ export default function SignIn() {
   };
   const submitHandler = async (event) => {
     event.preventDefault();
-    const user = {
-      email,
-      password,
-    };
-    console.log("user", user);
-    const response = await authServices.Login(user);
-    console.log("response :>> ", response.data);
+    try {
+      const user = {
+        username,
+        password,
+      };
+      console.log("user", user);
+      const response = await authServices.Login(user);
+
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      setJWT(token);
+      navigate("/HomePage");
+    } catch (error) {
+      console.log("error.response.data.error :>> ", error.response.data.error);
+    }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  useEffect(() => {
+    if (JWT || JWT !== "") {
+      navigate("/Login");
+    }
+  }, [JWT, navigate]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -100,10 +109,10 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
               onChange={(e) => handleChange(e)}
             />

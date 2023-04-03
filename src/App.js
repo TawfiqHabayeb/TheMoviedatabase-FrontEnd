@@ -13,28 +13,18 @@ function App() {
   return (
     <MainContextProvider>
       <Provider store={store}>
-        <Routes>
-          {false ? (
-            <>
-              <AuthCheck>
-                <Route path="/" element={<HomePage />} />
+        <AuthCheck>
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="Login" element={<Login />} />
+            <Route path="/HomePage" element={<HomePage />} />
 
-                <Route path="/search/:query" element={<SearchPage />} />
+            <Route path="/search/:query" element={<SearchPage />} />
+            <Route path="SignUp" element={<SignUp />} />
 
-                <Route path="/movieDetails/:id" element={<MovieDetails />} />
-              </AuthCheck>
-            </>
-          ) : (
-            <>
-              <Route path="/" element={<Login />} />
-              <Route path="/search/:query" element={<SearchPage />} />
-              <Route path="/movieDetails/:id" element={<MovieDetails />} />
-              <Route path="Login" element={<Login />} />
-              <Route path="SignUp" element={<SignUp />} />
-              <Route path="Login" element={<Login />} />
-            </>
-          )}
-        </Routes>
+            <Route path="/movieDetails/:id" element={<MovieDetails />} />
+          </Routes>
+        </AuthCheck>
       </Provider>
     </MainContextProvider>
   );

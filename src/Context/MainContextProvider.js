@@ -3,9 +3,9 @@ import React, { useState } from "react";
 const MainContext = React.createContext();
 const MainContextProvider = (props) => {
   const localJWT = localStorage.getItem("token") || " ";
-  const [Jwt, setJWT] = useState(localJWT);
+  const [JWT, setJWT] = useState(localJWT);
   return (
-    <MainContext.Provider value={{ Jwt, setJWT }}>
+    <MainContext.Provider value={{ JWT, setJWT }}>
       {props.children}
     </MainContext.Provider>
   );
