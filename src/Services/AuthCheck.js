@@ -7,10 +7,10 @@ const AuthCheck = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!JWT || JWT === " ") {
+    if (!JWT || JWT === "") {
       return navigate("/");
     }
-  }, []);
+  }, [JWT, navigate]);
 
   return <div>{props.children}</div>;
 };

@@ -1,5 +1,16 @@
-import { Flex, Box, Spacer } from "@chakra-ui/react";
+import { Flex, Box, Spacer, Button } from "@chakra-ui/react";
+import authServices from "../Services/AuthServices";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { MainContext } from "../Context/MainContextProvider";
 const Header = () => {
+  const { jwt, setJWT } = useContext(MainContext);
+  const navigate = useNavigate();
+  const logout = () => {
+    authServices.logout();
+    setJWT("");
+    return navigate("/Login");
+  };
   return (
     <Flex
       className="header"
@@ -26,6 +37,15 @@ const Header = () => {
           width="28px"
           hight="26px"
         />
+        <Button
+          color="white"
+          bg={"#002242"}
+          variant={"solid"}
+          borderRadius={"3rem"}
+          onClick={() => logout()}
+        >
+          Logout
+        </Button>
       </Flex>
     </Flex>
   );

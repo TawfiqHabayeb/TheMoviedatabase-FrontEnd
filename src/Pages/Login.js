@@ -77,9 +77,9 @@ export default function SignIn() {
 
   useEffect(() => {
     if (JWT || JWT !== "") {
-      navigate("/Login");
+      navigate("/HomePage");
     }
-  }, [JWT, navigate]);
+  }, [JWT]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -110,7 +110,7 @@ export default function SignIn() {
               required
               fullWidth
               id="username"
-              label="Username"
+              label="Email"
               name="username"
               autoComplete="username"
               autoFocus
