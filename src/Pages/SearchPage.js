@@ -33,7 +33,10 @@ const SearchPage = () => {
           }}
         >
           <div className="moviesearch1">
-            <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} />
+            <img
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+              alt="moviePoster"
+            />
           </div>
           <div className="moviesearch2">
             <h2>{movie.title}</h2>

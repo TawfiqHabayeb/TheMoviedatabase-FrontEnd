@@ -9,14 +9,13 @@ import { Provider } from "react-redux";
 import { MainContextProvider } from "./Context/MainContextProvider";
 import AuthCheck from "./Services/AuthCheck";
 function App() {
-  // three routes  instead, false hasAccess set true when the user login is successful, set token local in storage
+
   return (
     <MainContextProvider>
       <Provider store={store}>
         <AuthCheck>
           <Routes>
             <Route path="/" element={<Login />} />
-            <Route path="Login" element={<Login />} />
             <Route path="/HomePage" element={<HomePage />} />
 
             <Route path="/search/:query" element={<SearchPage />} />
@@ -30,6 +29,6 @@ function App() {
   );
 }
 export default App;
-{
+
   /* <Route path="/wishLIst" element={<WishList />} /> */
-}
+

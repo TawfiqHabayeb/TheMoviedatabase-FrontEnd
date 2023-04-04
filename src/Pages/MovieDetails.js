@@ -48,6 +48,7 @@ const MovieDetails = () => {
           <img
             src={`https://image.tmdb.org/t/p/w500/${movieDetails.poster_path}`}
             className="movieDetailsIMG1"
+            alt="Movie details is not showing"
           />
         </div>
         <div className="movieDetails1">
@@ -57,8 +58,7 @@ const MovieDetails = () => {
           </div>
         </div>
       </div>
-     
-    
+
       <div className="castCont">
         <h3 classname="movieDetails"> Movie Cast</h3>
         <div div className="movieDetails1part2">
@@ -74,6 +74,7 @@ const MovieDetails = () => {
                           : ""
                       }
                       className="posterImage"
+                      alt="moviePoster"
                     />
                   </div>
                   <div className="movieDescreption">

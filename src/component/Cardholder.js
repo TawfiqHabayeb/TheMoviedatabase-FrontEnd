@@ -38,6 +38,7 @@ const Cardholder = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
                 className="posterImage"
+                alt="moviePoster"
               />
             </div>
             <div className="movieDescreption">
