@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { AddIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 const Cardholder = () => {
   const trending = useSelector((state) => state.reducer.trending);
   const navigate = useNavigate();
@@ -22,8 +24,26 @@ const Cardholder = () => {
     getMovies();
   }, [trending]);
 
-  const addToList = () => {};
+  const addToList = (movie) => {
+    const token = localStorage.getItem("token");
 
+    const headers = {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    };
+    const userId = localStorage.getItem("userId");
+    fetch("http://localhost:3001/WatchedList", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        poster_path: movie.poster_path,
+        title: movie.title,
+        release_date: movie.release_date,
+        movieId: movie.id,
+        userId: userId,
+      }),
+    });
+  };
   return (
     <div className="mainDiv">
       {movies &&
@@ -44,12 +64,12 @@ const Cardholder = () => {
             <div className="movieDescreption">
               <div className="movieTitle">
                 <h4
-                  className="wishButton"
+                  className="addToListBtn"
                   onClick={() => {
-                    addToList();
+                    addToList(movie);
                   }}
                 >
-                  {/* <ImBookmark /> */}
+                  <AddIcon />
                 </h4>
                 <p className="movieTitle">{movie.title}</p>
               </div>

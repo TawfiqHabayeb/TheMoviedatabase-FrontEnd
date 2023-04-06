@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 
-
 import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -59,15 +58,15 @@ export default function SignIn() {
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
-      const user = {
+      const userLoginInfo = {
         username,
         password,
       };
-      console.log("user", user);
-      const response = await authServices.Login(user);
-
-      const { token } = response.data;
+      const response = await authServices.Login(userLoginInfo);
+      const { token, user } = response.data;
+      // console.log(user);
       localStorage.setItem("token", token);
+      localStorage.setItem("userId", user._id);
       setJWT(token);
       navigate("/HomePage");
     } catch (error) {

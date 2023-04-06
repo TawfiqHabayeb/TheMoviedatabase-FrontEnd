@@ -8,8 +8,8 @@ import store from "./redux/Store";
 import { Provider } from "react-redux";
 import { MainContextProvider } from "./Context/MainContextProvider";
 import AuthCheck from "./Services/AuthCheck";
+import WatchedList from "./Pages/WatchedList";
 function App() {
-
   return (
     <MainContextProvider>
       <Provider store={store}>
@@ -17,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/HomePage" element={<HomePage />} />
+            <Route path="/WatchedList" element={<WatchedList />} />
 
             <Route path="/search/:query" element={<SearchPage />} />
             <Route path="SignUp" element={<SignUp />} />
@@ -29,6 +30,3 @@ function App() {
   );
 }
 export default App;
-
-  /* <Route path="/wishLIst" element={<WishList />} /> */
-

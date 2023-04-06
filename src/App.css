@@ -204,17 +204,52 @@
   );
 }
 
-.logoutBtn {
+.watchListBtn {
   color: #fff;
-  border-radius: 30px;
-  padding: 10px;
+
   border: none;
-  background: linear-gradient(
+  font-size: 1em;
+  background-color: transparent;
+}
+
+.watchListBtn:hover {
+  background-image: linear-gradient(
     to right,
     rgb(30, 213, 169) 0%,
     rgb(1, 180, 228) 100%
   );
-}
-.logoutBtn:hover {
   cursor: pointer;
+  border-radius: 20px;
+  background-clip: text;
+  color: transparent;
+  z-index: 1000;
+}
+.HeaderContainer {
+  justify-content: space-between;
+}
+
+.logoutBtn {
+  color: #fff;
+
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
+}
+
+.logoutBtn:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(30, 213, 169) 0%,
+    rgb(1, 180, 228) 100%
+  );
+  cursor: pointer;
+  border-radius: 20px;
+  background-clip: text;
+  color: transparent;
+  z-index: 1000;
+}
+
+.addToListBtn:hover {
+  cursor: pointer;
+  color: rgb(30, 213, 169);
 }
