@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
+
+import Header from "../component/Header";
 const SearchPage = () => {
   const { query } = useParams();
   const navigate = useNavigate();
@@ -23,29 +25,32 @@ const SearchPage = () => {
   }, [query]);
 
   return (
-    <div className="MovieSearchCon">
-      {movies.map((movie) => (
-        <div
-          key={movie.id}
-          className="moviesearch"
-          onClick={() => {
-            navigate(`../movieDetails/${movie.id}`);
-          }}
-        >
-          <div className="moviesearch1">
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-              alt="moviePoster"
-            />
+    <>
+      <Header />
+
+      <div className="MovieSearchCon">
+        {movies.map((movie) => (
+          <div
+            key={movie.id}
+            className="moviesearch"
+            onClick={() => {
+              navigate(`../movieDetails/${movie.id}`);
+            }}
+          >
+            <div className="moviesearch1">
+              <img
+                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                alt="moviePoster"
+              />
+            </div>
+            <div className="moviesearch2">
+              <h2>{movie.title}</h2>
+              <p>{movie.release_date}</p>
+            </div>
           </div>
-          <div className="moviesearch2">
-            <h2>{movie.title}</h2>
-            <p>{movie.release_date}</p>
-            <p>{movie.overview}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 

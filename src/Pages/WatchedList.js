@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import Header from "../component/Header";
 const WatchedList = () => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);
@@ -22,35 +22,34 @@ const WatchedList = () => {
     };
     getMovies();
   }, []);
-  console.log(movies);
+
   return (
-    <div className="mainDiv">
-      {movies &&
-        movies.map((movie) => (
-          <div className="postContainer0" key={movie.id}>
-            <div
-              className="postContainer"
-              onClick={() => {
-                navigate(`../movieDetails/${movie.movieId}`);
-              }}
-            >
+    <>
+      <Header />
+
+      <div className="MovieSearchCon">
+        {movies.map((movie, index) => (
+          <div
+            key={index}
+            className="moviesearch"
+            onClick={() => {
+              navigate(`../movieDetails/${movie.movieId}`);
+            }}
+          >
+            <div className="moviesearch1">
               <img
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                className="posterImage"
                 alt="moviePoster"
               />
             </div>
-            <div className="movieDescreption">
-              <div className="movieTitle">
-                <p className="movieTitle">{movie.title}</p>
-              </div>
-              <div className="pubDate">
-                <h3>{movie.release_date}</h3>
-              </div>
+            <div className="moviesearch2">
+              <h2>{movie.title}</h2>
+              <p>{movie.release_date}</p>
             </div>
           </div>
         ))}
-    </div>
+      </div>
+    </>
   );
 };
 

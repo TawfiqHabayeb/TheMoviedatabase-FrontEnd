@@ -64,7 +64,7 @@ export default function SignIn() {
       };
       const response = await authServices.Login(userLoginInfo);
       const { token, user } = response.data;
-      // console.log(user);
+
       localStorage.setItem("token", token);
       localStorage.setItem("userId", user._id);
       setJWT(token);

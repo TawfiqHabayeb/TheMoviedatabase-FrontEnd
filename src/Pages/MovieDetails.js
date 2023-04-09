@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../component/Footer";
+import Header from "../component/Header";
 
 const MovieDetails = () => {
   const [movieDetails, setMovieDetail] = useState({});
@@ -43,6 +44,7 @@ const MovieDetails = () => {
 
   return (
     <>
+      <Header />
       <div className="movieDetailsBG1">
         <div className="movieDetails0">
           <img
@@ -60,7 +62,7 @@ const MovieDetails = () => {
       </div>
 
       <div className="castCont">
-        <h3 classname="movieDetails"> Movie Cast</h3>
+        <h3 className="movieDetails"> Movie Cast</h3>
         <div div className="movieDetails1part2">
           {actors && !!actors.length ? (
             actors.map((a) => {
